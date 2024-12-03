@@ -85,6 +85,16 @@ namespace crud_first_version
                         DataTable dt = new DataTable();
                         sd.Fill(dt);
 
+                        
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            foreach (DataColumn col in dt.Columns)
+                            {
+                                if (row.IsNull(col))
+                                    row[col] = "N/A";
+                            }
+                        }
+
                         GridView1.DataSource = dt;
                         GridView1.DataBind();
                     }
